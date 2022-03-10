@@ -51,12 +51,16 @@ let config = {
 		
 		// VolumeConstraint parameters
 		LAMBDA_V : [0,1000,50],					// VolumeConstraint importance per cellkind
-		V : [0,250,250],						// Target volume of each cellkind
+		V : [0,200,200],						// Target volume of each cellkind
 		
 		LAMBDA_P : [0,1000,2],
-		P : [0,1,160]
+		P : [0,1,160],
 		
-		
+		// ActivityConstraint parameters
+		LAMBDA_ACT: [0, 0, 300],				// ActivityConstraint importance per cellkind
+        MAX_ACT: [0, 0, 30],					// Activity memory duration per cellkind
+        ACT_MEAN: "geometric"				// Is neighborhood activity computed as a
+											// "geometric" or "arithmetic" mean?
 	},
 	
 	// Simulation setup and configuration
@@ -103,16 +107,6 @@ function initialize(){
 	 	drawCanvas: drawCanvas
 	 }
 	sim = new CPM.Simulation( config, custommethods )
-
-let pconstraint = new CPM.PersistenceConstraint( 
-	{
-		// PersistenceConstraint parameters
-		LAMBDA_DIR: [0,0,500], 				// PersistenceConstraint importance per ck
-		PERSIST: [0,0,0.5]						// Weight of the persistent direction in the
-		// computation of the new direction per cellkind
-	} 
-)
-sim.C.add( pconstraint )
 
 
 
