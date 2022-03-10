@@ -47,11 +47,11 @@ let config = {
 		// Adhesion parameters:
 		J: [[0,20,20], 
 			[20,20,20], 
-			[20,20,20]],
+			[20,20,0]],
 		
 		// VolumeConstraint parameters
 		LAMBDA_V : [0,1000,50],					// VolumeConstraint importance per cellkind
-		V : [0,500,200],						// Target volume of each cellkind
+		V : [0,250,250],						// Target volume of each cellkind
 		
 		LAMBDA_P : [0,1000,2],
 		P : [0,1,160]
@@ -107,8 +107,8 @@ function initialize(){
 let pconstraint = new CPM.PersistenceConstraint( 
 	{
 		// PersistenceConstraint parameters
-		LAMBDA_DIR: [0,0,100], 				// PersistenceConstraint importance per ck
-		PERSIST: [0,0,0.2]						// Weight of the persistent direction in the
+		LAMBDA_DIR: [0,0,500], 				// PersistenceConstraint importance per ck
+		PERSIST: [0,0,0.5]						// Weight of the persistent direction in the
 		// computation of the new direction per cellkind
 	} 
 )
@@ -191,7 +191,7 @@ function drawCanvas(){
 	}
 		
 	/* This part is for drawing the preferred directions */
-	let pdc = this.C.getConstraint( "PersistenceConstraint" )
+	/*let pdc = this.C.getConstraint( "PersistenceConstraint" )
 	let ctx = this.Cim.context(), zoom = this.conf["zoom"]
 	let prefdir = ( pdc.conf["LAMBDA_DIR"][ cellkind+1 ] > 0  ) || false
 	ctx.beginPath()
@@ -210,7 +210,8 @@ function drawCanvas(){
 		ctx.lineTo( (pdc.cellcentroidlists[i][0][0]+.1*pdc.celldirections[i][0])*zoom,
 			(pdc.cellcentroidlists[i][0][1]+.1*pdc.celldirections[i][1])*zoom)
 	}
-	ctx.stroke()		
+	ctx.stroke()
+	*/
 }
 	
 
