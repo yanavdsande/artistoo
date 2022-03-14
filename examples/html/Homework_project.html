@@ -133,13 +133,17 @@ function initializeGrid(){
 	// add the GridManipulator if not already there and if you need it
 	if( !this.helpClasses["gm"] ){ this.addGridManipulator() }
 	
-	
+	for( let i = 0 ; i < this.C.extents[0] ; i += 40 ){
+		for( let j = 0 ; j < this.C.extents[1] ; j += 40 ){
+			this.gm.seedCellAt( 1, [i,j] )
+		}
+	}
 	// CHANGE THE CODE BELOW TO FIT YOUR SIMULATION
 	
 	let nrcells = this.conf["NRCELLS"], cellkind, i
 		
 	// Seed the right number of cells for each cellkind
-	for( cellkind = 0; cellkind < nrcells.length; cellkind ++ ){
+	for( cellkind = 1; cellkind < nrcells.length; cellkind ++ ){
 			
 		for( i = 0; i < nrcells[cellkind]; i++ ){
 			// first cell always at the midpoint. Any other cells
@@ -213,8 +217,8 @@ function drawCanvas(){
 </head>
 <body onload="initialize()">
  
- <h1>Persistent directions</h1>
+ <h1>Hoi Yana en Denise</h1>
  <p>
- Many moving cells with an imposed persistence constraint. </p>
+ Kijk, het werkt! </p>
 </body>
 </html>
