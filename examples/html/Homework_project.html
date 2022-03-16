@@ -133,11 +133,12 @@ function initializeGrid(){
 	// add the GridManipulator if not already there and if you need it
 	if( !this.helpClasses["gm"] ){ this.addGridManipulator() }
 	
-	for( let i = 0 ; i < this.C.extents[0] ; i += 40 ){
-		for( let j = 0 ; j < this.C.extents[1] ; j += 40 ){
+	for( let i = 0 ; i < this.C.extents[0] ; i += 20 ){
+		for( let j = 0 ; j < this.C.extents[1] ; j += 20 ){
 			this.gm.seedCellAt( 1, [i,j] )
 		}
 	}
+    this.gm.seedCellAt( 1, this.C.midpoint )
 	// CHANGE THE CODE BELOW TO FIT YOUR SIMULATION
 	
 	let nrcells = this.conf["NRCELLS"], cellkind, i
@@ -148,11 +149,11 @@ function initializeGrid(){
 		for( i = 0; i < nrcells[cellkind]; i++ ){
 			// first cell always at the midpoint. Any other cells
 			// randomly.				
-			if( i == 0 ){
-				this.gm.seedCellAt( cellkind+1, this.C.midpoint )
-			} else {
+			// if( i == 0 ){
+			// 	this.gm.seedCellAt( cellkind+1, this.C.midpoint )
+			// } else {
 				this.gm.seedCell( cellkind+1 )
-			}
+			// }
 			// Burnin for each cell
 			for( let b = 0; b < 5; b++ ){
 				this.C.monteCarloStep()
