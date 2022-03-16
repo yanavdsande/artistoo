@@ -77,7 +77,7 @@ let config = {
 		// Visualization
 		CANVASCOLOR : "eaecef",
 		CELLCOLOR : ["00FF00","0000FF"],
-		ACTCOLOR : [false,false],					// Should pixel activity values be displayed?
+		ACTCOLOR : [true,true],					// Should pixel activity values be displayed?
 		SHOWBORDERS : [true,true],				// Should cellborders be displayed?
 		zoom : 2,							// zoom in on canvas with this factor.
 		
@@ -174,7 +174,8 @@ function drawCanvas(){
 		
 	// Draw each cellkind appropriately
 	let cellcolor=this.conf["CELLCOLOR"], 
-		nrcells=this.conf["NRCELLS"], cellkind, cellborders = this.conf["SHOWBORDERS"]
+		nrcells=this.conf["NRCELLS"], cellkind, cellborders = this.conf["SHOWBORDERS"],
+        actcolor=this.conf["ACTCOLOR"]
 	for( cellkind = 0; cellkind < nrcells.length; cellkind ++ ){
 		
 		// draw the cells of each kind in the right color
@@ -186,8 +187,12 @@ function drawCanvas(){
 		if(  cellborders[ cellkind  ]  ){
 			this.Cim.drawCellBorders( cellkind+1, "000000" )
 		}
+
+        if (actcolor[cellkind]){
+         this.Cim.drawActivityValues(cellkind+1)
+        }
 	}
-		
+
 	/* This part is for drawing the preferred directions */
 	/*let pdc = this.C.getConstraint( "PersistenceConstraint" )
 	let ctx = this.Cim.context(), zoom = this.conf["zoom"]
