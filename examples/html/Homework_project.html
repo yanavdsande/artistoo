@@ -50,15 +50,15 @@ let config = {
 			[20,20,0]],
 		
 		// VolumeConstraint parameters
-		LAMBDA_V : [0,1000,50],					// VolumeConstraint importance per cellkind
-		V : [0,200,200],						// Target volume of each cellkind
+		LAMBDA_V : [0,100,50],					// VolumeConstraint importance per cellkind
+		V : [0,100,200],						// Target volume of each cellkind
 		
-		LAMBDA_P : [0,1000,2],
+		LAMBDA_P : [0,10,2],
 		P : [0,1,180],
 		
 		// ActivityConstraint parameters
 		LAMBDA_ACT: [0, 0, 200],				// ActivityConstraint importance per cellkind
-        MAX_ACT: [0, 0, 20],					// Activity memory duration per cellkind
+        MAX_ACT: [0, 0, 80],					// Activity memory duration per cellkind
         ACT_MEAN: "geometric"				// Is neighborhood activity computed as a
 											// "geometric" or "arithmetic" mean?
 	},
