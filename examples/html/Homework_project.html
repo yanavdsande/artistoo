@@ -133,12 +133,11 @@ function initializeGrid(){
 	// add the GridManipulator if not already there and if you need it
 	if( !this.helpClasses["gm"] ){ this.addGridManipulator() }
 	
-	for( let i = 0 ; i < this.C.extents[0] ; i += 20 ){
-		for( let j = 0 ; j < this.C.extents[1] ; j += 20 ){
+	for( let i = 0 ; i < this.C.extents[0] ; i += 35 ){
+		for( let j = 0 ; j < this.C.extents[1] ; j += 35 ){
 			this.gm.seedCellAt( 1, [i,j] )
 		}
 	}
-    this.gm.seedCellAt( 1, this.C.midpoint )
 	// CHANGE THE CODE BELOW TO FIT YOUR SIMULATION
 	
 	let nrcells = this.conf["NRCELLS"], cellkind, i
@@ -193,29 +192,6 @@ function drawCanvas(){
          this.Cim.drawActivityValues(cellkind+1)
         }
 	}
-
-	/* This part is for drawing the preferred directions */
-	/*let pdc = this.C.getConstraint( "PersistenceConstraint" )
-	let ctx = this.Cim.context(), zoom = this.conf["zoom"]
-	let prefdir = ( pdc.conf["LAMBDA_DIR"][ cellkind+1 ] > 0  ) || false
-	ctx.beginPath()
-	ctx.lineWidth = 2*zoom
-
-	for( let i of this.C.cellIDs() ){
-		
-		// Only draw for cells that have a preferred direction.
-		//if( i == 0 ) continue
-		prefdir = ( pdc.conf["LAMBDA_DIR"][ this.C.cellKind( i ) ] > 0  ) || false
-		if( !prefdir ) continue
-			
-		ctx.moveTo( 
-			pdc.cellcentroidlists[i][0][0]*zoom,
-			pdc.cellcentroidlists[i][0][1]*zoom)
-		ctx.lineTo( (pdc.cellcentroidlists[i][0][0]+.1*pdc.celldirections[i][0])*zoom,
-			(pdc.cellcentroidlists[i][0][1]+.1*pdc.celldirections[i][1])*zoom)
-	}
-	ctx.stroke()
-	*/
 }
 	
 
